@@ -122,6 +122,22 @@ Matrix operator * (const Matrix& a, const Matrix& b) {
 	}
 }
 
+bool operator==(const Matrix& a, const Matrix& b) {
+	if (a.m_ == b.m_ && a.n_ == b.n_) {
+		for (int i = 0; i < a.m_; i++) {
+			for (int j = 0; j < a.n_; j++) {
+				if (a.data_[i][j] != b.data_[i][j]) {
+					return false;
+				}
+			}
+		}
+	}
+	else {
+		return false;
+	}
+	return true;
+}
+
 void Transposition(Matrix& mat) {
 	Matrix res;
 	Construct(res, mat.m_, mat.n_);
